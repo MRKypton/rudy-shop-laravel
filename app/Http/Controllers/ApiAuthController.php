@@ -25,4 +25,19 @@ class ApiAuthController extends Controller
 
         return response()->json(['message' => 'User registered successfully', 'user' => $user], Response::HTTP_CREATED);
     }
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $user = User::where('email', $credentials['email'])->first();
+            $token = $user->createToken('api-token')->plainTextToken;
+            return response()->json(['token' => $token], Response::HTTP_OK);
+        }
+
+        return response()->json(['message' => 'Invalid credentials'], Response::HTTP_UNAUTHORIZED);
+    }
 }

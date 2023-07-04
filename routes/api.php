@@ -25,3 +25,5 @@ Route::get('/', function () {
 });
 
 Route::post('/register', [ApiAuthController::class, 'register']);
+
+Route::post('/login', [ApiAuthController::class, 'login']);
