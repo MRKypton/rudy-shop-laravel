@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiAuthController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,5 @@ Route::post('/register', [ApiAuthController::class, 'register']);
 Route::post('/login', [ApiAuthController::class, 'login'])->name('login');
 
 Route::middleware('auth:sanctum')->get('/logout', [ApiAuthController::class, 'logout']);
+
+Route::middleware('auth:sanctum')->post('/upload-image', [ImageController::class, 'upload']);
