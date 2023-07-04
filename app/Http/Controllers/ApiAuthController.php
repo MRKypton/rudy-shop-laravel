@@ -40,4 +40,11 @@ class ApiAuthController extends Controller
 
         return response()->json(['message' => 'Invalid credentials'], Response::HTTP_UNAUTHORIZED);
     }
+    public function logout(Request $request)
+    {
+        $user = $request->user();
+        $user->tokens()->delete();
+
+        return response()->json(['message' => 'Logged out successfully'], Response::HTTP_OK);
+    }
 }
