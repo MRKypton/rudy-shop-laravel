@@ -32,3 +32,5 @@ Route::post('/login', [ApiAuthController::class, 'login'])->name('login');
 Route::middleware('auth:sanctum')->get('/logout', [ApiAuthController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->post('/upload-image', [ImageController::class, 'upload']);
+
+Route::middleware('auth:sanctum')->get('/images/{image_id}', [ImageController::class, 'show']);
