@@ -49,7 +49,7 @@ php artisan serve
 
 **2. จงเขียนตัวอย่าง sql query ในโค้ด php โดยให้มีชุดคำสั่งที่ช่วยป้องกัน sql injection (ตั้งชื่อตารางชื่อฟิลด์ด้วยตัวเองได้เลย)**
 
-> มีการป้องกัน sql injection ด้วยการทำ sanitization input ของ user ก่อนที่จะนำไป query โดยการทำ 
+> มีการป้องกัน sql injection ด้วยการ sanitization input ของ user ก่อนที่จะนำไป query โดยการทำ 
 > - prepare-statement
 > - bind-parameters
 > 
@@ -149,7 +149,7 @@ EmployeeID | Salary
 4 | 7000
 
 > คำสั่งเรียกข้อมูลของพนักงานที่มีรายได้มากที่สุดของแต่ละแผนกออกมาแสดง ด้วยการใช้
-> - Main query เพื่อชุดข้อมูลและตารางที่จะดึงข้อมูล และ filter ด้วย ```WHERE (...)``` 
+> - Main query เพื่อเตรียมชุดข้อมูลและตารางที่จะดึงข้อมูล และ filter ด้วย ```WHERE (...)``` 
 > - Middle sub query เพื่อดึงเงินเดือนที่มากที่สุด ```MAX(Salary)``` ของแต่ละแผนกออกมาตาม id ของพนักงานใน ```IN (...)```
 > - Inner sub query เพื่อจับกลุ่มพนักงานที่อยู่แผนกเดียวกันให้ middle query ทำงานใน ```IN (...) ```
 
@@ -242,7 +242,7 @@ id | name
 SELECT P.id AS prduct_id, P.name AS product_name
 FROM tb_product P
 JOIN tb_shop S ON S.id = P.shop_id
-WHERE S.id = 1;
+WHERE S.name = 'rudy shop';
 ```
 
 Result should be
@@ -267,7 +267,7 @@ WHERE shop_id = (SELECT id FROM tb_shop WHERE name = 'rudy shop');
 ```sql
 SELECT * from tb_product;
 ```
-
+---
 **6. จงเขียน function ของ code sql เพื่อปรับรูปแบบการ select ข้อมูล ตามประเภทข้อมูลดังนี้เพื่อให้ได้ผลลัพธืดังตัวอย่าง type date ให้แสดงผลเป็น dd/mm/YYYY type float,double ให้แสดงผลเป็น x,xxx,xxx.xx (สามารถเขียนได้มากกว่า 2 ข้อที่ยกตัวอย่าง)**
 
 > Create seed data 
@@ -316,7 +316,7 @@ formatted_date | formatted_amount
 08/07/2023 | 25,525.75
 09/07/2023 | 506,000.25
 09/07/2023 | 154,856.80
-
+---
 **7. จงเขียน code function php ในการคำนวณผลลัพธ์ใบเสนอราคาโดยหัวข้อมีดังนี้**
 
 -   ราคาสินค้ารวม = สามารถตั้งเองได้ ```-> $total```
