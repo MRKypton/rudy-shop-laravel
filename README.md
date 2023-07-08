@@ -18,6 +18,8 @@ php artisan migrate
 php artisan serve
 ```
 
+## API testing on postman
+> import rudy-shop.postman_collection.json เข้าไปใน postman เพื่อลองใช้งาน API
 ---
 
 # PART 2
