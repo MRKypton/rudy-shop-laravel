@@ -50,7 +50,20 @@ $password = $_POST['password'];
 
 $sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 $statement = $condb->prepare($sql);
+$statement->bind_param("ss", $username, $password);
+$statement->execute();
 
+$result = $statement->get_result();
+
+if ($row = $result->fetch_assoc()) {
+    echo "Login successful!";
+} else {
+    echo "Invalid credentials.";
+}
+
+$statement(->close();
+
+#
 >
 ```
 
