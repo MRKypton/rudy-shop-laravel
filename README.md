@@ -32,14 +32,14 @@ php artisan serve
 
         > โดยพื้นฐาน ระบบจะมี passwod ของ user เป็น factor ที่ 1 ในการยืนยันตัวตนเข้าระบบ และมีการใช้รหัสอีกชุดที่เป็น factor ตัวที่ 2 เพื่อใช้ในการยืนยันตัวตนเข้าระบบเพิ่มขึ้นมาจากเดิม
 
-        > ex. SMS-OTP, Email-OTP, Google Authenticator เป็นต้น
+        > ex. SMS-OTP, Email-OTP, Google Authenticator
 
     -   Capcha หรือ Re-capcha
         > เป็นการทำโจทย์เล็กๆน้อยๆที่คอมพิวเตอร์ทั่วไปทำไม่ได้ เพื่อเป็นการกรอง submit ที่มาจากคนจริงๆ ช่วยให้ระบบสามารถป้องกัน brute force scripting หรือ automate brute force ได้
 
 -   Back-end ควรใช้เครื่องมือเหล่านี้ในการป้องกัน
     -   Rate Limiting [IP, Account lockout]
-        > เมื่อมีการพยายามยิง request มาที่ ระบบ authentication ระบบจะทำการ track จำนวนครั้งที่ user หรือ IP นั้นๆ ใช้ creadentail login ผิดพลาด เพื่อเมื่อถึง threshold ที่ตั้งไว้ เช่น login ผิด 5 ครั้ง จะทำการ Block user หรือ IP นั้นๆถาวร/ชั่วคราวโดยมีระยะเวลาเท่าไหรตามแต่ policy ของบริษัท
+        > เมื่อมีการพยายามยิง request มาที่ ระบบ authentication ระบบจะทำการ track จำนวนครั้งที่ user หรือ IP นั้นๆ ใช้ creadentail login ผิดพลาด เพื่อเมื่อถึง threshold ที่ตั้งไว้ เช่น login ผิด 5 ครั้ง จะทำการ Block user หรือ IP นั้นๆถาวร/ชั่วคราวโดยมีระยะเวลาเท่าใด ตามแต่ policy ของบริษัท
     -   Logging & Monitoring
         > ทำ log การ request login เพื่อตรวจจับ request ที่น่าสงสัย เช่น มีการพยายาม login หลาย request จาก IP เดิม เป็นต้น
 
